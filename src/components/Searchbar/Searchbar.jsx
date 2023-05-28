@@ -1,10 +1,11 @@
 import { FormMovies } from '../App.styled';
 
 export default function Searchbar(props) {
-  const handleSubmit = async event => {
+  const handleSubmit = event => {
     event.preventDefault();
     const form = event.currentTarget;
-    const search = await form.elements.search.value.trim();
+    const search = form.elements.search.value.trim();
+    if (search === '') return;
     props.onSubmit(search);
     form.reset();
   };
