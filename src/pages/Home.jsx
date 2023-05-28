@@ -18,11 +18,11 @@ export default function Home() {
     };
     return await axios
       .request(options)
-      .then(async function (response) {
+      .then(function (response) {
         return response.data;
       })
-      .then(async function (data) {
-        setMovies(await data.results);
+      .then(function (data) {
+        setMovies(data.results);
       })
       .catch(function (error) {
         console.error(error);
