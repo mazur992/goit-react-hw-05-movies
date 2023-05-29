@@ -1,14 +1,15 @@
-import { Outlet, Link, useSearchParams } from 'react-router-dom';
+import { Outlet, Link, useSearchParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Searchbar from 'components/Searchbar/Searchbar';
 
 export default function Movies() {
+  const locationMovies = useLocation();
   const [moviesSearch, setMoviesSearch] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchMovie = searchParams.get('search');
   const onSubmit = data => {
-    setSearchParams({ search: data });
+    data !== '' ? setSearchParams({ search: data }) : setSearchParams({});
   };
   useEffect(() => {
     const options = {
@@ -45,10 +46,13 @@ export default function Movies() {
       <Searchbar onSubmit={onSubmit}></Searchbar>
       <ul>
         {searchMovie &&
+          moviesSearch &&
           moviesSearch.map(movie => {
             return (
               <li key={movie.id}>
-                <Link to={`${movie.id}`}>{movie.title}</Link>
+                <Link to={`${movie.id}`} state={{ from: locationMovies }}>
+                  {movie.title}
+                </Link>
               </li>
             );
           })}

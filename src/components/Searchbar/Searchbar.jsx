@@ -4,8 +4,7 @@ export default function Searchbar(props) {
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.currentTarget;
-    const search = form.elements.search.value.trim();
-    if (search === '') return;
+    const search = form.elements.search.value;
     props.onSubmit(search);
     form.reset();
   };

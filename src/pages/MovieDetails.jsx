@@ -1,8 +1,9 @@
-import { Outlet, Link, useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { Outlet, Link, useParams, useLocation } from 'react-router-dom';
+import { useState, useEffect, Suspense } from 'react';
 import axios from 'axios';
 
 export default function MovieDetails() {
+  const locationDetails = useLocation();
   const [movieDetails, setMoviesDetails] = useState(null);
   const { movieId } = useParams();
 
@@ -32,6 +33,7 @@ export default function MovieDetails() {
     <>
       {movieDetails && (
         <>
+          <Link to={locationDetails.state?.from || '/'}>Back</Link>
           <h2>{`${movieDetails.title} (${movieDetails.release_date})`}</h2>
           <p>{`User Score: ${Math.round(movieDetails.vote_average * 10)}%`}</p>
           <h3>Overview</h3>

@@ -43,7 +43,7 @@ export default function Reviews() {
         </ul>
       )}
       {reviews && reviews.length < 1 && (
-        <div>we dont have any movies for this film!</div>
+        <div>We dont have any reviews for this film!</div>
       )}
     </>
   );
