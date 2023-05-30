@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { CastStyle } from '../components/App.styled';
 
 export default function Cast() {
   const [actors, setActors] = useState(null);
@@ -29,7 +30,7 @@ export default function Cast() {
   }, [movieId]);
 
   return (
-    <>
+    <CastStyle>
       {actors && (
         <ul>
           {actors.map(actor => {
@@ -37,7 +38,7 @@ export default function Cast() {
               <li key={actor.id}>
                 <img
                   src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
-                  alt="Grapefruit slice atop a pile of other slices"
+                  alt="Actor"
                 />
                 <p>{actor.original_name}</p>
                 <p>{`Character ${actor.character}`}</p>
@@ -47,6 +48,6 @@ export default function Cast() {
         </ul>
       )}
       {!actors && <p>Opsss!</p>}
-    </>
+    </CastStyle>
   );
 }

@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import { Nav, StyledLink } from './App.styled';
+import { Nav, StyledLink, AppStyle } from './App.styled';
 const Home = lazy(() => import('../pages/Home'));
 const Movies = lazy(() => import('../pages/Movies'));
 const MovieDetails = lazy(() => import('../pages/MovieDetails'));
@@ -10,7 +10,7 @@ const Reviews = lazy(() => import('../pages/Reviews'));
 export const App = () => {
   const location = useLocation();
   return (
-    <div>
+    <AppStyle>
       <header>
         <Nav>
           <StyledLink to="/" end>
@@ -34,6 +34,6 @@ export const App = () => {
           </Routes>
         </Suspense>
       </main>
-    </div>
+    </AppStyle>
   );
 };

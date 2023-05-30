@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { HomeStyle } from '../components/App.styled';
 
 import axios from 'axios';
 export default function Home() {
@@ -33,18 +34,20 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <HomeStyle>
       <h1>Trending today</h1>
       <ul>
         {movies &&
           movies.map(movie => {
             return (
               <li key={movie.id}>
-                <Link to={`movies/${movie.id}`}>{movie.title}</Link>
+                <Link to={`movies/${movie.id}`}>
+                  {movie.title || movie.name}
+                </Link>
               </li>
             );
           })}
       </ul>
-    </>
+    </HomeStyle>
   );
 }

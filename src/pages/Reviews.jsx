@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 import { useState, useEffect } from 'react';
+import { ReviewsStyle } from '../components/App.styled';
 
 export default function Reviews() {
   const { movieId } = useParams();
@@ -29,7 +30,7 @@ export default function Reviews() {
   }, [movieId]);
 
   return (
-    <>
+    <ReviewsStyle>
       {reviews && (
         <ul>
           {reviews.map(review => {
@@ -45,6 +46,6 @@ export default function Reviews() {
       {reviews && reviews.length < 1 && (
         <div>We dont have any reviews for this film!</div>
       )}
-    </>
+    </ReviewsStyle>
   );
 }

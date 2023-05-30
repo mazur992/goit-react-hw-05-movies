@@ -2,6 +2,7 @@ import { Outlet, Link, useSearchParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Searchbar from 'components/Searchbar/Searchbar';
+import { MoviesStyle } from '../components/App.styled';
 
 export default function Movies() {
   const locationMovies = useLocation();
@@ -42,7 +43,7 @@ export default function Movies() {
   }, [searchMovie]);
 
   return (
-    <div>
+    <MoviesStyle>
       <Searchbar onSubmit={onSubmit}></Searchbar>
       <ul>
         {searchMovie &&
@@ -58,6 +59,6 @@ export default function Movies() {
           })}
       </ul>
       <Outlet />
-    </div>
+    </MoviesStyle>
   );
 }
