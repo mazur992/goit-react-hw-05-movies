@@ -63,3 +63,13 @@ export const FormMovies = styled.div`
     font-size: 18px;
   }
 `;
+
+export const MovieDetailsStyle = styled.div`
+  & .movieDetailsContainer {
+    display: flex;
+    gap: 15px;
+  }
+  & img {
+    width: 200px;
+  }
+`;

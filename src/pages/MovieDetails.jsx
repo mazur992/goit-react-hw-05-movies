@@ -1,6 +1,7 @@
 import { Outlet, Link, useParams, useLocation } from 'react-router-dom';
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { MovieDetailsStyle } from '../components/App.styled';
 
 export default function MovieDetails() {
   const locationDetails = useLocation();
@@ -32,15 +33,25 @@ export default function MovieDetails() {
   return (
     <>
       {movieDetails && (
-        <>
+        <MovieDetailsStyle>
           <Link to={locationDetails.state?.from || '/'}>Back</Link>
-          <h2>{`${movieDetails.title} (${movieDetails.release_date})`}</h2>
-          <p>{`User Score: ${Math.round(movieDetails.vote_average * 10)}%`}</p>
-          <h3>Overview</h3>
-          <p>{`${movieDetails.overview}`}</p>
-          <h4>Genres</h4>
-          <p></p>
-        </>
+          <div className="movieDetailsContainer">
+            <img
+              src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+              alt={movieDetails.title}
+            />
+            <div>
+              <h2>{`${movieDetails.title} (${movieDetails.release_date})`}</h2>
+              <p>{`User Score: ${Math.round(
+                movieDetails.vote_average * 10
+              )}%`}</p>
+              <h3>Overview</h3>
+              <p>{`${movieDetails.overview}`}</p>
+              <h4>Genres</h4>
+              <p></p>
+            </div>
+          </div>
+        </MovieDetailsStyle>
       )}
       <p>Additional information</p>
       <ul>
