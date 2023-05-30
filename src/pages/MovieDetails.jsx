@@ -62,10 +62,14 @@ export default function MovieDetails() {
       <h4 className="movieSubTitle">Additional information</h4>
       <ul className="movieSubTitleList">
         <li className="movieitem">
-          <Link to="cast">cast</Link>
+          <Link to="cast" state={{ from: locationDetails }}>
+            cast
+          </Link>
         </li>
         <li className="movieitem">
-          <Link to="reviews">reviews</Link>
+          <Link to="reviews" state={{ from: locationDetails }}>
+            reviews
+          </Link>
         </li>
       </ul>
       <Outlet />

@@ -1,4 +1,5 @@
 import { FormMovies } from '../App.styled';
+import PropTypes from 'prop-types';
 
 export default function Searchbar(props) {
   const handleSubmit = event => {
@@ -25,3 +26,4 @@ export default function Searchbar(props) {
     </FormMovies>
   );
 }
+Searchbar.propTypes = { onSubmit: PropTypes.func.isRequired };

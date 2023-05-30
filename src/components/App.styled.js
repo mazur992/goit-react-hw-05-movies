@@ -122,6 +122,9 @@ export const MovieDetailsStyle = styled.div`
   }
   & .movieitem {
     margin-bottom: 10px;
+    padding: 4px 10px;
+    background-color: tomato;
+    border-radius: 25px;
   }
   & .movieSubTitleList {
     display: flex;
@@ -137,7 +140,7 @@ export const CastStyle = styled.div`
     gap: 30px;
   }
   & li {
-    width: 150px;
+    width: calc((100% - 180px) / 7);
   }
 `;
 export const ReviewsStyle = styled.div`

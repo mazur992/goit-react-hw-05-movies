@@ -13,33 +13,35 @@ export default function Movies() {
     data !== '' ? setSearchParams({ search: data }) : setSearchParams({});
   };
   useEffect(() => {
-    const options = {
-      method: 'GET',
-      url: 'https://api.themoviedb.org/3/search/movie',
-      params: {
-        query: `${searchMovie}`,
-        include_adult: 'false',
-        language: 'en-US',
-        page: '1',
-      },
-      headers: {
-        accept: 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZjM2YWJkZmM3NDE4MTQ0MTZlZDNhOWQ3OGZkMzNiNiIsInN1YiI6IjY0MzU1ZDlmZWM4YTQzMDIxOTI2NzJhYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JLPbYzf2ZSUL6iP2RY-vf-bExRMCVBdbt1ajwYeenmE',
-      },
-    };
+    if (searchMovie !== null) {
+      const options = {
+        method: 'GET',
+        url: 'https://api.themoviedb.org/3/search/movie',
+        params: {
+          query: `${searchMovie}`,
+          include_adult: 'false',
+          language: 'en-US',
+          page: '1',
+        },
+        headers: {
+          accept: 'application/json',
+          Authorization:
+            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZjM2YWJkZmM3NDE4MTQ0MTZlZDNhOWQ3OGZkMzNiNiIsInN1YiI6IjY0MzU1ZDlmZWM4YTQzMDIxOTI2NzJhYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JLPbYzf2ZSUL6iP2RY-vf-bExRMCVBdbt1ajwYeenmE',
+        },
+      };
 
-    axios
-      .request(options)
-      .then(function (response) {
-        return response.data;
-      })
-      .then(function (data) {
-        setMoviesSearch(data.results);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+      axios
+        .request(options)
+        .then(function (response) {
+          return response.data;
+        })
+        .then(function (data) {
+          setMoviesSearch(data.results);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    }
   }, [searchMovie]);
 
   return (
