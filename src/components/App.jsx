@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { Nav, StyledLink, AppStyle } from './App.styled';
 const Home = lazy(() => import('../pages/Home'));
@@ -8,7 +8,6 @@ const Cast = lazy(() => import('../pages/Cast'));
 const Reviews = lazy(() => import('../pages/Reviews'));
 
 export const App = () => {
-  const location = useLocation();
   return (
     <AppStyle>
       <header>
@@ -16,9 +15,7 @@ export const App = () => {
           <StyledLink to="/" end>
             Home
           </StyledLink>
-          <StyledLink to="/movies" state={{ from: location }}>
-            Movies
-          </StyledLink>
+          <StyledLink to="/movies">Movies</StyledLink>
         </Nav>
       </header>
       <main>

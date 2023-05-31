@@ -1,6 +1,6 @@
 import { Outlet, Link, useSearchParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import Searchbar from 'components/Searchbar/Searchbar';
 import { MoviesStyle } from '../components/App.styled';
 
@@ -60,7 +60,9 @@ export default function Movies() {
             );
           })}
       </ul>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </MoviesStyle>
   );
 }

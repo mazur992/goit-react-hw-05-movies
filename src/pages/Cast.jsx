@@ -37,7 +37,11 @@ export default function Cast() {
             return (
               <li key={actor.id}>
                 <img
-                  src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+                  src={
+                    actor.profile_path
+                      ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
+                      : `https://via.placeholder.com/400x600/000000/FFFFFF?text=Not+Found`
+                  }
                   alt="Actor"
                 />
                 <p>{actor.original_name}</p>

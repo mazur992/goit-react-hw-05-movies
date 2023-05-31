@@ -106,6 +106,9 @@ export const MovieDetailsStyle = styled.div`
   & .movieScore {
     margin-bottom: 5px;
   }
+  & .movieDetailsImg {
+    width: 280px;
+  }
   & h3 {
     margin-bottom: 5px;
   }
@@ -134,6 +137,7 @@ export const MovieDetailsStyle = styled.div`
   }
 `;
 export const CastStyle = styled.div`
+  margin-top: 40px;
   & ul {
     display: flex;
     flex-wrap: wrap;
@@ -144,6 +148,7 @@ export const CastStyle = styled.div`
   }
 `;
 export const ReviewsStyle = styled.div`
+  margin-top: 40px;
   & h5 {
     margin-bottom: 5px;
   }

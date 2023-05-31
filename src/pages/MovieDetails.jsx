@@ -1,10 +1,11 @@
 import { Outlet, Link, useParams, useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, Suspense } from 'react';
 import axios from 'axios';
 import { MovieDetailsStyle } from '../components/App.styled';
 
 export default function MovieDetails() {
   const locationDetails = useLocation();
+  const backLinkLocationRef = useRef(locationDetails.state?.from || '/');
   const [movieDetails, setMoviesDetails] = useState(null);
   const { movieId } = useParams();
 
@@ -34,10 +35,15 @@ export default function MovieDetails() {
     <MovieDetailsStyle>
       {movieDetails && (
         <>
-          <Link to={locationDetails.state?.from || '/'}>Back</Link>
+          <Link to={backLinkLocationRef.current}>Back</Link>
           <div className="movieDetailsContainer">
             <img
-              src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+              className="movieDetailsImg"
+              src={
+                movieDetails.poster_path
+                  ? `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`
+                  : `https://via.placeholder.com/400x600/FFFFFF/000000?text=Not+Found`
+              }
               alt={movieDetails.title}
             />
             <div>
@@ -62,17 +68,15 @@ export default function MovieDetails() {
       <h4 className="movieSubTitle">Additional information</h4>
       <ul className="movieSubTitleList">
         <li className="movieitem">
-          <Link to="cast" state={{ from: locationDetails }}>
-            cast
-          </Link>
+          <Link to="cast">cast</Link>
         </li>
         <li className="movieitem">
-          <Link to="reviews" state={{ from: locationDetails }}>
-            reviews
-          </Link>
+          <Link to="reviews">reviews</Link>
         </li>
       </ul>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </MovieDetailsStyle>
   );
 }
