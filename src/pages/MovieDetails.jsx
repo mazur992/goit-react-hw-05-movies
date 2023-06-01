@@ -1,5 +1,6 @@
 import { Outlet, Link, useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef, Suspense } from 'react';
+
 import axios from 'axios';
 import { MovieDetailsStyle } from '../components/App.styled';
 

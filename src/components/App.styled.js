@@ -6,15 +6,52 @@ export const AppStyle = styled.div`
   padding-left: 24px;
 `;
 export const HomeStyle = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   padding-right: 10px;
   padding-left: 10px;
   & h1 {
     font-size: 24px;
     margin-bottom: 10px;
   }
-  & li {
-    margin-bottom: 5px;
+  & ul {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  & .homeList {
+    display: grid;
+    max-width: calc(100vw - 48px);
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-gap: 16px;
+    margin-top: 0;
+    margin-bottom: 30px;
+    padding: 0;
+    list-style: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  & .homeItem {
+    padding-bottom: 10px;
     font-weight: 700;
+    border-radius: 2px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  }
+  & img {
+    width: 100%;
+    height: 622px;
+    object-fit: cover;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 20px;
+  }
+  & img:hover {
+    transform: scale(1.03);
+    cursor: zoom-in;
+  }
+  & .containerPaginate {
   }
 `;
 export const MoviesStyle = styled.div`
@@ -31,6 +68,13 @@ export const Nav = styled.nav`
   padding-top: 10px;
   padding-left: 15px;
   background-color: #3f51b5;
+  & a {
+    color: black;
+    transition: color 250ms ease;
+  }
+  & a:hover {
+    color: white;
+  }
 `;
 export const StyledLink = styled(NavLink)`
   color: black;
