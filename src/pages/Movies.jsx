@@ -1,5 +1,6 @@
 import { Outlet, Link, useSearchParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useState, useEffect, Suspense } from 'react';
 import Searchbar from 'components/Searchbar/Searchbar';
 import { MoviesStyle } from '../components/App.styled';
@@ -44,6 +45,10 @@ export default function Movies() {
         .then(function (data) {
           setTotalPages(data.total_pages);
           setMoviesSearch(data.results);
+          if (data.results.length === 0) {
+            Notify.failure('Nothing was found for your request');
+            setTotalPages(null);
+          }
           window.scrollTo({
             top: 0,
             behavior: 'instant',
