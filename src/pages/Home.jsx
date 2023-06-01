@@ -18,8 +18,8 @@ export default function Home() {
     async function getMoviesTop() {
       const options = {
         method: 'GET',
-        url: `https://api.themoviedb.org/3/trending/all/day?page=${currentPage}`,
-        params: { language: 'en-US' },
+        url: `https://api.themoviedb.org/3/trending/all/day`,
+        params: { language: 'en-US', page: `${currentPage}` },
         headers: {
           accept: 'application/json',
           Authorization:
