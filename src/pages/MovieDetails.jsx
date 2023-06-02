@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, Suspense } from 'react';
 
 import axios from 'axios';
 import { MovieDetailsStyle } from '../components/App.styled';
+import Modal from '../components/Modal/Modal';
 
 export default function MovieDetails() {
   const locationDetails = useLocation();
@@ -10,6 +11,27 @@ export default function MovieDetails() {
   const [movieDetails, setMoviesDetails] = useState(null);
   const { movieId } = useParams();
 
+  const handleClick = () => {
+    const options = {
+      method: 'GET',
+      url: `https://api.themoviedb.org/3/movie/${String(movieId)}/videos`,
+      params: { language: 'en-US' },
+      headers: {
+        accept: 'application/json',
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZjM2YWJkZmM3NDE4MTQ0MTZlZDNhOWQ3OGZkMzNiNiIsInN1YiI6IjY0MzU1ZDlmZWM4YTQzMDIxOTI2NzJhYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JLPbYzf2ZSUL6iP2RY-vf-bExRMCVBdbt1ajwYeenmE',
+      },
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  };
   useEffect(() => {
     const options = {
       method: 'GET',
@@ -62,6 +84,9 @@ export default function MovieDetails() {
                   return <span key={genre.id}>{`${genre.name} `}</span>;
                 })}
               </p>
+              <button type="button" onClick={handleClick}>
+                Trailer
+              </button>
             </div>
           </div>
         </>
@@ -78,6 +103,7 @@ export default function MovieDetails() {
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
+      <Modal></Modal>
     </MovieDetailsStyle>
   );
 }
