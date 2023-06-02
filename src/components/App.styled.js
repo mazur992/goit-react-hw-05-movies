@@ -215,6 +215,29 @@ export const MovieDetailsStyle = styled.div`
     justify-content: center;
     font-weight: 700;
   }
+  & .movieTrailerBtn {
+    display: block;
+    margin-top: 20px;
+    width: 160px;
+    height: 40px;
+    border: none;
+    color: white;
+
+    background-color: #ff3814;
+
+    cursor: pointer;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.33;
+    text-align: center;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    transition: background-color 250ms ease;
+  }
+  & .movieTrailerBtn:hover {
+    background-color: tomato;
+  }
 `;
 export const CastStyle = styled.div`
   margin-top: 40px;
@@ -234,5 +257,33 @@ export const ReviewsStyle = styled.div`
   }
   & p {
     margin-bottom: 10px;
+  }
+`;
+export const ModalStyle = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  // padding-top: 80px;
+  // padding:-bottom: 80px;
+  & .modal__window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    // padding-top: 40px;
+    // padding:-bottom: 40px;
+    // max-width: calc(100vw - 50px);
+    // max-height: auto;
+    // width: 1200px;
+    // height: 550px;
   }
 `;

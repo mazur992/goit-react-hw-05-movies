@@ -9,6 +9,9 @@ export default function MovieDetails() {
   const locationDetails = useLocation();
   const backLinkLocationRef = useRef(locationDetails.state?.from || '/');
   const [movieDetails, setMoviesDetails] = useState(null);
+  const [trailers, setTrailers] = useState([]);
+  const [isShowModal, setIsShowModal] = useState(false);
+
   const { movieId } = useParams();
 
   const handleClick = () => {
@@ -26,11 +29,15 @@ export default function MovieDetails() {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data);
+        setTrailers(response.data.results.map(result => result.key));
+        setIsShowModal(true);
       })
       .catch(function (error) {
         console.error(error);
       });
+  };
+  const hideModal = () => {
+    setIsShowModal(false);
   };
   useEffect(() => {
     const options = {
@@ -84,7 +91,11 @@ export default function MovieDetails() {
                   return <span key={genre.id}>{`${genre.name} `}</span>;
                 })}
               </p>
-              <button type="button" onClick={handleClick}>
+              <button
+                className="movieTrailerBtn"
+                type="button"
+                onClick={handleClick}
+              >
                 Trailer
               </button>
             </div>
@@ -103,7 +114,7 @@ export default function MovieDetails() {
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>
-      <Modal></Modal>
+      {isShowModal && <Modal trailers={trailers} hideModal={hideModal}></Modal>}
     </MovieDetailsStyle>
   );
 }
