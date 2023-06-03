@@ -1,23 +1,24 @@
 import { Outlet, Link, useSearchParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useContext } from 'react';
 import Searchbar from 'components/Searchbar/Searchbar';
 import { MoviesStyle } from '../components/App.styled';
 import Paginate from '../components/paginate/Paginate';
+import AppContext from '../components/AppContext/AppContext';
 
 export default function Movies() {
+  const { globalPage, setGlobalPage } = useContext(AppContext);
   const locationMovies = useLocation();
   const [moviesSearch, setMoviesSearch] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [totalPages, setTotalPages] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
   const searchMovie = searchParams.get('search');
   const onSubmit = data => {
     data !== '' ? setSearchParams({ search: data }) : setSearchParams({});
   };
   function changePage(data) {
-    setCurrentPage(data + 1);
+    setGlobalPage(data + 1);
   }
   useEffect(() => {
     if (searchMovie !== null) {
@@ -28,7 +29,7 @@ export default function Movies() {
           query: `${searchMovie}`,
           include_adult: 'false',
           language: 'en-US',
-          page: `${currentPage}`,
+          page: `${globalPage}`,
         },
         headers: {
           accept: 'application/json',
@@ -58,7 +59,7 @@ export default function Movies() {
           console.error(error);
         });
     }
-  }, [searchMovie, currentPage]);
+  }, [searchMovie, globalPage]);
 
   return (
     <MoviesStyle>

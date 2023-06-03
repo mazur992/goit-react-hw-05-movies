@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Paginate from '../components/paginate/Paginate';
-
+import AppContext from '../components/AppContext/AppContext';
 import { HomeStyle } from '../components/App.styled';
 
 import axios from 'axios';
 export default function Home() {
+  const { globalPage, setGlobalPage } = useContext(AppContext);
   const [movies, setMovies] = useState(null);
   const [totalPages, setTotalPages] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
 
   function changePage(data) {
-    setCurrentPage(data + 1);
+    setGlobalPage(data + 1);
   }
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function Home() {
       const options = {
         method: 'GET',
         url: `https://api.themoviedb.org/3/trending/all/day`,
-        params: { language: 'en-US', page: `${currentPage}` },
+        params: { language: 'en-US', page: `${globalPage}` },
         headers: {
           accept: 'application/json',
           Authorization:
@@ -45,7 +45,7 @@ export default function Home() {
         });
     }
     getMoviesTop();
-  }, [currentPage]);
+  }, [globalPage]);
 
   return (
     <HomeStyle>
