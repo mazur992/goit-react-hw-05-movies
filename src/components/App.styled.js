@@ -203,17 +203,24 @@ export const MovieDetailsStyle = styled.div`
     margin-top: 10px;
     margin-bottom: 10px;
   }
+  & a {
+    color: white;
+  }
   & .movieitem {
     margin-bottom: 10px;
     padding: 4px 10px;
-    background-color: tomato;
+
     border-radius: 25px;
+    background-color: #ff3814;
+    transition: background-color 250ms ease;
+  }
+  & .movieitem:hover {
+    background-color: tomato;
   }
   & .movieSubTitleList {
     display: flex;
     gap: 30px;
     justify-content: center;
-    font-weight: 700;
   }
   & .movieTrailerBtn {
     display: block;
@@ -265,25 +272,13 @@ export const ModalStyle = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1000;
-  // padding-top: 80px;
-  // padding:-bottom: 80px;
   & .modal__window {
     position: absolute;
     top: 50%;
     left: 50%;
 
     transform: translate(-50%, -50%);
-
-    // padding-top: 40px;
-    // padding:-bottom: 40px;
-    // max-width: calc(100vw - 50px);
-    // max-height: auto;
-    // width: 1200px;
-    // height: 550px;
   }
 `;

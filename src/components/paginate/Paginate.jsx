@@ -1,6 +1,9 @@
 import ReactPaginate from 'react-paginate';
+import AppContext from '../AppContext/AppContext';
+import { useContext } from 'react';
 
 export default function Paginate({ totalPages, changePage }) {
+  const { globalPage } = useContext(AppContext);
   const handlePageClick = event => {
     changePage(event.selected);
   };
@@ -25,6 +28,7 @@ export default function Paginate({ totalPages, changePage }) {
         breakLinkClassName="page-link"
         containerClassName="pagination"
         activeClassName="active"
+        initialPage={globalPage - 1}
         renderOnZeroPageCount={null}
       />
     </>
