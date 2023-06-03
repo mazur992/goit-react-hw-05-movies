@@ -203,9 +203,6 @@ export const MovieDetailsStyle = styled.div`
     margin-top: 10px;
     margin-bottom: 10px;
   }
-  & a {
-    color: white;
-  }
   & .movieitem {
     margin-bottom: 10px;
     padding: 4px 10px;
