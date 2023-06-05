@@ -10,9 +10,7 @@ const Reviews = lazy(() => import('../pages/Reviews'));
 
 export const App = () => {
   const [globalPage, setGlobalPage] = useState(1);
-  const resetContext = () => {
-    setGlobalPage(1);
-  };
+  const resetContext = () => {};
   function handleClick() {
     resetContext();
   }

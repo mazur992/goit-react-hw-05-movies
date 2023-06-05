@@ -29,6 +29,7 @@ export default function Paginate({ totalPages, changePage }) {
         containerClassName="pagination"
         activeClassName="active"
         initialPage={globalPage - 1}
+        forcePage={globalPage - 1}
         renderOnZeroPageCount={null}
       />
     </>

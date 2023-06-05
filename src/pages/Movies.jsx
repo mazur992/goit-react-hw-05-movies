@@ -15,6 +15,7 @@ export default function Movies() {
   const [totalPages, setTotalPages] = useState(null);
   const searchMovie = searchParams.get('search');
   const onSubmit = data => {
+    setGlobalPage(1);
     data !== '' ? setSearchParams({ search: data }) : setSearchParams({});
   };
   function changePage(data) {
