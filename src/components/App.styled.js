@@ -53,6 +53,9 @@ export const HomeStyle = styled.div`
   }
   & .containerPaginate {
   }
+  & .homeMovieTitle {
+    margin-left: 10px;
+  }
 `;
 
 export const MoviesStyle = styled.div`
@@ -94,6 +97,10 @@ export const MoviesStyle = styled.div`
   & .pagination {
     margin-top: 15px;
     justify-content: center;
+  }
+  & .moviesTitle {
+    margin-left: 10px;
+    margin-bottom: 10px;
   }
 `;
 export const Nav = styled.nav`
@@ -176,9 +183,15 @@ export const FormMovies = styled.div`
 
 export const MovieDetailsStyle = styled.div`
   & .movieDetailsContainer {
-    margin-top: 5px;
     display: flex;
-    gap: 15px;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+     @media screen and (min-width: 768px) {
+      flex-direction: row; 
+      margin-top: 5px;
+      gap: 15px;
+    }}
   }
   & h2 {
     margin-bottom: 5px;
@@ -187,7 +200,7 @@ export const MovieDetailsStyle = styled.div`
     margin-bottom: 5px;
   }
   & .movieDetailsImg {
-    width: 280px;
+    width: 100%;
   }
   & h3 {
     margin-bottom: 5px;
@@ -251,7 +264,20 @@ export const CastStyle = styled.div`
     gap: 30px;
   }
   & li {
-    width: calc((100% - 180px) / 7);
+    width: 100%;
+  }
+  @media screen and (min-width: 768px) {
+    & li {
+      width: calc((100% - 120px) / 5);
+    }
+    & .movieDetailsImg {
+      width: 280px;
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    & li {
+      width: calc((100% - 180px) / 7);
+    }
   }
 `;
 export const ReviewsStyle = styled.div`

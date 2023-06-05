@@ -72,7 +72,7 @@ export default function MovieDetails() {
               src={
                 movieDetails.poster_path
                   ? `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`
-                  : `https://via.placeholder.com/400x600/FFFFFF/000000?text=Not+Found`
+                  : `https://via.placeholder.com/400x600/000000/FFFFFF?text=Not+Found`
               }
               alt={movieDetails.title}
             />

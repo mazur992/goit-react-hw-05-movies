@@ -81,7 +81,7 @@ export default function Movies() {
                       }
                       alt="movie"
                     />
-                    {movie.title || movie.name}
+                    <p className="moviesTitle">{movie.title || movie.name}</p>
                   </Link>
                 </li>
               );

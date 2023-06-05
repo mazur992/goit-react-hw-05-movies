@@ -50,7 +50,6 @@ export default function Home() {
   return (
     <HomeStyle>
       <div>
-        {/* <h1>Trending today</h1> */}
         <ul className="homeList">
           {movies &&
             movies.map(movie => {
@@ -65,7 +64,9 @@ export default function Home() {
                       }
                       alt="movie"
                     />
-                    {movie.title || movie.name}
+                    <p className="homeMovieTitle">
+                      {movie.title || movie.name}
+                    </p>
                   </Link>
                 </li>
               );

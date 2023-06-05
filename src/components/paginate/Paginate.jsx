@@ -11,12 +11,12 @@ export default function Paginate({ totalPages, changePage }) {
   return (
     <>
       <ReactPaginate
-        nextLabel="next >"
+        nextLabel=">>"
         onPageChange={handlePageClick}
         pageRangeDisplayed={3}
         marginPagesDisplayed={2}
         pageCount={totalPages}
-        previousLabel="< previous"
+        previousLabel="<<"
         pageClassName="page-item"
         pageLinkClassName="page-link"
         previousClassName="page-item"
