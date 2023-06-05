@@ -57,6 +57,9 @@ export const HomeStyle = styled.div`
   & .homeMovieTitle {
     margin-left: 10px;
   }
+  & .pagination {
+    flex-wrap: wrap;
+  }
 `;
 
 export const MoviesStyle = styled.div`
@@ -102,6 +105,9 @@ export const MoviesStyle = styled.div`
   & .moviesTitle {
     margin-left: 10px;
     margin-bottom: 10px;
+  }
+  & .pagination {
+    flex-wrap: wrap;
   }
 `;
 export const Nav = styled.nav`
@@ -317,7 +323,7 @@ export const ModalStyle = styled.div`
     transform: translate(-50%, -50%);
   }
   & .modal__iframe {
-    width: 440px;
+    width: 400px;
     height: 80vh;
     @media screen and (min-width: 768px) {
       width: 650px;
