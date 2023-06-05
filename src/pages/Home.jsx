@@ -76,7 +76,6 @@ export default function Home() {
       {totalPages && (
         <Paginate totalPages={totalPages} changePage={changePage} />
       )}
-      ,
     </HomeStyle>
   );
 }

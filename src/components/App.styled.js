@@ -9,6 +9,7 @@ export const HomeStyle = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 20px;
 
   padding-right: 10px;
   padding-left: 10px;
@@ -182,6 +183,9 @@ export const FormMovies = styled.div`
 `;
 
 export const MovieDetailsStyle = styled.div`
+& .containerLockBack{
+  margin-left: 15px;
+}
   & .movieDetailsContainer {
     display: flex;
     flex-direction: column;
@@ -233,8 +237,12 @@ export const MovieDetailsStyle = styled.div`
     justify-content: center;
   }
   & .movieTrailerBtn {
+      
     display: block;
     margin-top: 20px;
+     margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
     width: 160px;
     height: 40px;
     border: none;
@@ -251,6 +259,10 @@ export const MovieDetailsStyle = styled.div`
     letter-spacing: 0.09em;
     text-transform: uppercase;
     transition: background-color 250ms ease;
+
+    @media screen and (min-width: 768px) {
+      margin-left: 0;
+    }
   }
   & .movieTrailerBtn:hover {
     background-color: tomato;

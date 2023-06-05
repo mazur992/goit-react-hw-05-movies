@@ -65,7 +65,9 @@ export default function MovieDetails() {
     <MovieDetailsStyle>
       {movieDetails && (
         <>
-          <Link to={backLinkLocationRef.current}>Back</Link>
+          <div className="containerLockBack">
+            <Link to={backLinkLocationRef.current}>Back</Link>
+          </div>
           <div className="movieDetailsContainer">
             <img
               className="movieDetailsImg"
