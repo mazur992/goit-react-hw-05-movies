@@ -316,4 +316,16 @@ export const ModalStyle = styled.div`
 
     transform: translate(-50%, -50%);
   }
+  & .modal__iframe {
+    width: 440px;
+    height: 80vh;
+    @media screen and (min-width: 768px) {
+      width: 650px;
+      height: 450px;
+    }
+    @media screen and (min-width: 1200px) {
+      width: 1200px;
+      height: 550px;
+    }
+  }
 `;

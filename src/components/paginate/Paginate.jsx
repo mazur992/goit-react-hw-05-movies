@@ -13,7 +13,7 @@ export default function Paginate({ totalPages, changePage }) {
       <ReactPaginate
         nextLabel=">>"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
+        pageRangeDisplayed={1}
         marginPagesDisplayed={2}
         pageCount={totalPages}
         previousLabel="<<"

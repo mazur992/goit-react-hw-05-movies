@@ -18,8 +18,6 @@ export default function Modal({ trailers, hideModal }) {
           webkitallowfullscreen="webkitallowfullscreen"
           src={`https://www.youtube.com/embed/${trailers[randomFilm]}`}
           title="A youtube video on React"
-          width="1200"
-          height="550"
           frameBorder="0"
         ></iframe>
       </div>
