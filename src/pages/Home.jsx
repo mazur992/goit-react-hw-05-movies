@@ -33,7 +33,7 @@ export default function Home() {
           return response.data;
         })
         .then(function (data) {
-          setTotalPages(data.total_pages);
+          setTotalPages(data.total_pages - 500);
           setMovies(data.results);
           window.scrollTo({
             top: 0,
