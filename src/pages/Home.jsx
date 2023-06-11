@@ -54,21 +54,21 @@ export default function Home() {
           {movies &&
             movies.map(movie => {
               return (
-                <li className="homeItem" key={movie.id}>
-                  <Link to={`movies/${movie.id}`}>
-                    <img
-                      src={
-                        movie.poster_path
-                          ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                          : `https://via.placeholder.com/400x600/000000/FFFFFF?text=Not+Found`
-                      }
-                      alt="movie"
-                    />
-                    <p className="homeMovieTitle">
-                      {movie.title || movie.name}
-                    </p>
-                  </Link>
-                </li>
+                movie.title && (
+                  <li className="homeItem" key={movie.id}>
+                    <Link to={`movies/${movie.id}`}>
+                      <img
+                        src={
+                          movie.poster_path
+                            ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                            : `https://via.placeholder.com/400x600/000000/FFFFFF?text=Not+Found`
+                        }
+                        alt="movie"
+                      />
+                      <p className="homeMovieTitle">{movie.title}</p>
+                    </Link>
+                  </li>
+                )
               );
             })}
         </ul>
